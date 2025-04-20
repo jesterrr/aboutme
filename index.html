@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/xp.css">
+  <title>Myspace</title>
+  <script src="https://unpkg.com/webamp@1.5.0/built/webamp.bundle.min.js"></script>
+  <style>
+    #webamp {
+      position: absolute;
+      z-index: 99999;
+    }
+    #winamp-button {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      z-index: 99999;
+      padding: 5px 10px;
+      background: #ECE9D8;
+      border: 1px solid #000;
+      cursor: pointer;
+      font-family: 'Tahoma', sans-serif;
+      font-size: 11px;
+      display: none;
+    }
+    #winamp-button:hover {
+      background: #316AC5;
+      color: white;
+    }
+  </style>
+</head>
+
+<body class="xp-theme">
+
+  <div id="webamp"></div>
+  <button id="winamp-button" onclick="showWebamp()">Open Winamp</button>
+  <script>
+    const Webamp = window.Webamp;
+    let webampInstance = null;
+
+    function showWebamp() {
+      if (webampInstance) {
+        webampInstance.reopen();
+        document.getElementById('winamp-button').style.display = 'none';
+      } else {
+        initWebamp();
+      }
+    }
+
+    async function initWebamp() {
+      if (Webamp.browserIsSupported()) {
+        const tracks = [
+          {
+            metaData: {
+              artist: "Aphex Twin",
+              title: "Come to Daddy - Little Lord Faulteroy Mix",
+              album: "Come To Daddy",
+              year: "1997"
+            },
+            url: new URL("webamp/Come to Daddy - Little Lord Faulteroy Mix.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Aphex Twin",
+              title: "Alberto Balsalm",
+              album: "...I Care Because You Do",
+              year: "1995"
+            },
+            url: new URL("webamp/Alberto Balsalm.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Aphex Twin",
+              title: "Xtal",
+              album: "Selected Ambient Works 85-92",
+              year: "1992"
+            },
+            url: new URL("webamp/Xtal.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Aphex Twin",
+              title: "Flim",
+              album: "Come To Daddy",
+              year: "1997"
+            },
+            url: new URL("webamp/Flim.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Aphex Twin",
+              title: "IZ-US",
+              album: "Come To Daddy",
+              year: "1997"
+            },
+            url: new URL("webamp/IZ-US.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Have A Nice Life",
+              title: "A Quick One Before the Eternal Worm Devours Connecticut",
+              album: "Deathconsciousness",
+              year: "2008"
+            },
+            url: new URL("webamp/A Quick One Before the Eternal Worm Devours Connecticut.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Lizard in the Spring",
+              title: "A Quick One Before the Eternal Worm Devours Appalachia",
+              album: "A Quick One Before the Eternal Worm Devours Appalachia",
+              year: "2022"
+            },
+            url: new URL("webamp/A Quick One Before the Eternal Worm Devours Appalachia.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Këkht Aräkh",
+              title: "Dröm Sång",
+              album: "Dröm Sång",
+              year: "2024"
+            },
+            url: new URL("webamp/Dröm Sång.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Basement Jaxx",
+              title: "Where's Your Head At",
+              album: "Rooty",
+              year: "2001"
+            },
+            url: new URL("webamp/Where's Your Head At.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Decalius",
+              title: "Shotgun",
+              album: "Dehumanizing Loneliness",
+              year: "2023"
+            },
+            url: new URL("webamp/Shotgun.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "i wxnt to slxxp,mad arieri",
+              title: "sakura zxc",
+              album: "sakura zxc",
+              year: "2024"
+            },
+            url: new URL("webamp/sakura zxc.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "SKAZZ",
+              title: "EGOIST",
+              album: "EGOIST",
+              year: "2023"
+            },
+            url: new URL("webamp/EGOIST.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Title Fight",
+              title: "Lefty",
+              album: "Floral Green",
+              year: "2012"
+            },
+            url: new URL("webamp/Lefty.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Title Fight",
+              title: "Society",
+              album: "Shed",
+              year: "2011"
+            },
+            url: new URL("webamp/Society.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Title Fight",
+              title: "Where Am I?",
+              album: "Shed",
+              year: "2011"
+            },
+            url: new URL("webamp/" + encodeURIComponent("Where Am I?.mp3"), window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "Crystal Castles",
+              title: "Good Time",
+              album: "Crystal Castles",
+              year: "2008"
+            },
+            url: new URL("webamp/Good Time.mp3", window.location.href).href
+          },
+          {
+            metaData: {
+              artist: "frxgxd",
+              title: "1553470665499594756",
+              album: "1553470665499594756",
+              year: "2022"
+            },
+            url: new URL("webamp/1553470665499594756.mp3", window.location.href).href
+          }
+        ];
+
+        webampInstance = new Webamp({
+          initialTracks: tracks,
+          __initialWindowLayout: {
+            main: { position: { x: 100, y: 100 } },
+            equalizer: { position: { x: 100, y: 216 } },
+            playlist: { position: { x: 100, y: 332 } }
+          },
+          zIndex: 99999
+        });
+
+        // Show button when Webamp closes
+        webampInstance.onClose(() => {
+          document.getElementById('winamp-button').style.display = 'block';
+        });
+
+        // Render Webamp
+        try {
+          await webampInstance.renderWhenReady(document.getElementById('webamp'));
+          document.getElementById('winamp-button').style.display = 'none';
+        } catch (error) {
+          console.error('Failed to render Webamp:', error);
+        }
+      }
+    }
+
+    // Initialize Webamp on page load
+    window.addEventListener('load', initWebamp);
+  </script>
+
+  <div class="window" style="width: 1200px; margin: 100px auto; position: relative;">
+    <div class="title-bar">
+      <div class="title-bar-text">MySpace - Jester</div>
+    </div>
+    <div class="window-body">
+      <div class="master-container">
+        <!-- Main Header Begins -->
+        <header class="main-header">
+          <nav class="search-bar">
+            <ul class="topnav home">
+              <li><a href="#">MySpace.com</a></li>
+              <li><a href="#">Home</a></li>
+            </ul>
+
+            <form>
+              <label>
+                The Web
+                <input type="radio" name="search-type" value="the-web">
+              </label>
+
+              <label>
+                MySpace
+                <input type="radio" name="search-type" value="myspace">
+              </label>
+
+              <label>
+                <input type="text" name="search">
+              </label>
+
+              <input class="submit-btn" type="submit" name="submit-button" value="Search">
+            </form>
+
+            <ul class="topnav signup">
+              <li><a href="#">Help</a></li>
+              <li><a href="#">SignUp</a></li>
+            </ul>
+          </nav>
+
+          <nav class="navbar">
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Browse</a></li>
+              <li><a href="#">Search</a></li>
+              <li><a href="#">Invite</a></li>
+              <li><a href="#">Film</a></li>
+              <li><a href="#">Mail</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Favorites</a></li>
+              <li><a href="#">Forum</a></li>
+              <li><a href="#">Groups</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Videos</a></li>
+              <li><a href="#">Music</a></li>
+              <li><a href="#">Classifieds</a></li>
+            </ul>
+          </nav>
+        </header>
+
+        <div class="page-content-container">
+          <!-- Profile Sidebar Begins -->
+          <aside class="profile-sidebar">
+            <header>
+              <h1>Jester</h1>
+            </header>
+
+            <!-- Profile Picture -->
+            <div class="profile-picture-container">
+              <img class="profile-pic" src="pictures/pfp.jpg" alt="A profile picture of Jester.">
+
+              <p class="personal-msg"><b>coding</b></p>
+
+              <ul class="gender-age">
+                <li>Male</li>
+                <li>15 years old</li>
+                <li>Los Angeles,</li>
+                <li>CALIFORNIA</li>
+                <li>United States</li>
+              </ul>
+
+              <ul class="last-login">
+                <li>Last Login:</li>
+                <li>Today</li>
+              </ul>
+            </div>
+
+            <!-- Social Links -->
+            <section class="myspace-url-box">
+              <h3><b>Find Me:</b></h3>
+              <p>GitHub: <a href="https://github.com/jester-var" target="_blank">@jester-var</a></p>
+              <p>Discord: @.jstr_</p>
+              <p>Instagram: <a href="https://instagram.com/jstrvar" target="_blank">@jstrvar</a></p>
+              <p>PicoCTF: <a href="https://play.picoctf.org/users/Khetsu" target="_blank">@Khetsu</a></p>
+              <p>Codeforces: <a href="https://codeforces.com/profile/khetsu" target="_blank">@khetsu</a></p>
+            </section>
+
+            <!-- Interests Section -->
+            <section class="interests">
+              <table class="sidebar-table">
+                <caption>
+                  <h2 class="sidebar-table-h2">My Interests</h2>
+                </caption>
+
+                <tbody>
+                  <tr>
+                    <th class="sidebar-table-header" scope="row">General</th>
+                    <td class="sidebar-table-data">
+                      <p>Coding, Music, Movies, History, Technology, Hacking, ANYTHING tech related</p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th class="sidebar-table-header" scope="row">Music</th>
+                    <td class="sidebar-table-data">
+                      <p><b>Artists</b>: Have A Nice Life, Lizard in the Spring, Aphex Twin, C418, Title Fight, Vs Self, Catalyst..., voluntaryviolence, Phonefoot, Lagrimas, Train Breaks Down, Oakwood, I Hate Sex, Merchant Ships, widowdusk, American Football, Ispentsixhourswatchingshockvideosyesterday, Knola, septemberistheonlytimeidontthinkofyou, sowithout., herlovebeheadsdaisies, Modern Baseball, Alex G (Released and Unreleased), Burzum, Kekth Arakh, Crystal Castles, Friedhof, Bergenot, Psychonaut 4</p>
+
+                      <p><b>Instruments</b>: Guitar</p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th class="sidebar-table-header" scope="row">Movies</th>
+                    <td class="sidebar-table-data">
+                      <p><b>Movies</b>: Super Bad, Donnie Darko, Fight Club, Harry Potter, The Hobbit, Lord of the Rings</p>
+
+                      <p><b>TV Shows</b>: Breaking Bad, Dexter, Dr. House, Young Sheldon, The Amazing World of Gumball</p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+          </aside>
+
+          <!-- Main Section -->
+          <main>
+            <section class="blurbs">
+              <header class="main-section-header">
+                <h2 class="main-section-h2">My Blurbs</h2>
+              </header>
+
+              <h3>About me:</h3>
+              <p>Hey There! I'm Jester.</p>
+
+              <p>I'm a Junior Ethical Hacker from Georgia.</p>
+
+              <p><b>I speak:</b></p>
+              <ol>
+                <li>Georgian</li>
+                <li>English</li>
+                <li>Russian</li>
+              </ol>
+
+              <p><b>And I code in:</b></p>
+              <ol>
+                <li>C++</li>
+                <li>Python</li>
+                <li>HTML, CSS</li>
+                <li>JS</li>
+                <li>Bash</li>
+              </ol>
+
+              <p>I'm good at OSINT, Web, and cryptography. and I LOVE CTFS!!!!</p>
+
+              <p>I'm also (kinda) good at guitar too.</p>
+
+              <p>If you need help with anything, do a CTF with me or just chat, Text me on discord!</p>
+
+              <h3>Who I'd like to meet:</h3>
+              <p>New People that have same interests as me :)))</p>
+            </section>
+          </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <nav>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">Terms</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Safety Tips</a></li>
+              <li><a href="#">Contact Myspace</a></li>
+              <li><a href="#">Report Inappropriate Content</a></li>
+              <li><a href="#">Promote!</a></li>
+              <li><a href="#">Advertise</a></li>
+              <li id="last"><a href="#">MySpace International</a></li>
+            </ul>
+          </nav>
+
+          <small>©2003-2006 MySpace.com. All Rights Reserved.</small>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <!-- Spinning Disk and Now Playing -->
+  <div class="spinning-disk-container">
+    <div class="spinning-disk">
+      <img src="disk.jpg" alt="Spinning Disk">
+    </div>
+    <div class="now-playing">Now Playing</div>
+    <div class="song-title">Aphex Twin - Come to Daddy (Little Lord Faulteroy Mix)</div>
+  </div>
+
+</body>
+
+</html>
