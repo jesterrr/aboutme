@@ -711,3 +711,144 @@ footer small {
 .song-title {
   display: none;
 }
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .window {
+    width: 90% !important;
+    margin: 20px auto !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .master-container {
+    padding: 10px;
+  }
+
+  .page-content-container {
+    flex-direction: column;
+  }
+
+  .profile-sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-bar form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .navbar ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .navbar li {
+    margin: 2px;
+  }
+
+  .footer nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .footer nav li {
+    margin: 2px;
+  }
+
+  .spinning-disk-container {
+    right: 10px;
+    bottom: 10px;
+    transform: scale(0.8);
+  }
+
+  #webamp {
+    transform: scale(0.8);
+    transform-origin: bottom left;
+  }
+
+  #winamp-button {
+    bottom: 5px;
+    left: 5px;
+  }
+
+  .profile-picture-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sidebar-table {
+    width: 100%;
+  }
+
+  .sidebar-table-data {
+    padding: 5px;
+  }
+
+  /* Improve touch targets */
+  a, button, input[type="submit"] {
+    padding: 8px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Improve form elements */
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+  }
+
+  /* Adjust text size for readability */
+  body {
+    font-size: 16px;
+  }
+
+  h1 { font-size: 24px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+}
+
+/* Additional adjustments for very small screens */
+@media screen and (max-width: 480px) {
+  .window {
+    margin: 10px auto !important;
+  }
+
+  .spinning-disk-container {
+    transform: scale(0.6);
+  }
+
+  #webamp {
+    transform: scale(0.6);
+  }
+
+  .topnav {
+    font-size: 14px;
+  }
+
+  .navbar {
+    font-size: 14px;
+  }
+
+  .footer {
+    font-size: 12px;
+  }
+}
