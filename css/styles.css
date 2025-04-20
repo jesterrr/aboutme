@@ -736,3 +736,37 @@ footer small {
   background: #316AC5;
   color: white;
 }
+
+/* Basic Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .master-container {
+    width: 100%;
+    min-width: 320px;
+    margin: 0;
+  }
+
+  .page-content-container {
+    width: 100%;
+    display: block;
+    padding: 10px;
+  }
+
+  .profile-sidebar, main {
+    width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  #webamp {
+    display: none !important;
+  }
+
+  .friend-pic-container img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
