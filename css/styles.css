@@ -5,6 +5,7 @@ Global
 */
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *, *:before, *:after {
@@ -17,6 +18,7 @@ body {
   background-size: cover;
   font-size: 8pt;
   margin: 0;
+  overflow-x: hidden;
 }
 
 a {
@@ -722,11 +724,13 @@ footer small {
 
 @media screen and (max-width: 768px) {
   .master-container {
-    padding: 10px;
+    width: 100%;
+    padding: 0;
   }
 
   .page-content-container {
     flex-direction: column;
+    padding: 10px;
   }
 
   .profile-sidebar {
@@ -736,119 +740,160 @@ footer small {
 
   main {
     width: 100%;
+    padding: 0;
   }
 
   .search-bar {
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    padding: 10px;
   }
 
   .search-bar form {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 5px;
+    flex-direction: row;
+    margin: 10px 0;
+  }
+
+  .search-bar input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px; /* Prevents iOS zoom on focus */
+  }
+
+  .navbar {
+    height: auto;
+    padding: 5px 0;
   }
 
   .navbar ul {
     flex-wrap: wrap;
-    justify-content: center;
     gap: 5px;
   }
 
   .navbar li {
-    margin: 2px;
+    padding: 5px 8px;
   }
 
-  .footer nav ul {
+  .navbar a {
+    font-size: 14px;
+    padding: 8px 0;
+  }
+
+  .topnav {
     flex-wrap: wrap;
     justify-content: center;
-    gap: 5px;
+    gap: 10px;
   }
 
-  .footer nav li {
-    margin: 2px;
+  .friend-pic-container {
+    width: calc(33.33% - 10px);
   }
 
-  .spinning-disk-container {
-    right: 10px;
-    bottom: 10px;
-    transform: scale(0.8);
-  }
-
-  #webamp {
-    transform: scale(0.8);
-    transform-origin: bottom left;
-  }
-
-  #winamp-button {
-    bottom: 5px;
-    left: 5px;
-  }
-
-  .profile-picture-container img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .sidebar-table {
+  .comment-wall table {
     width: 100%;
-  }
-
-  .sidebar-table-data {
-    padding: 5px;
+    display: block;
+    overflow-x: auto;
   }
 
   /* Improve touch targets */
   a, button, input[type="submit"] {
-    padding: 8px;
     min-height: 44px;
+    min-width: 44px;
+    padding: 12px;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Better spacing for mobile */
+  .blurbs, .friends, .comment-wall {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .friend-pic-container {
+    width: calc(50% - 10px);
+  }
+
+  .navbar li::after {
+    display: none;
+  }
+
+  .navbar ul {
+    flex-direction: column;
     align-items: center;
   }
 
-  /* Improve form elements */
-  input[type="text"] {
+  .navbar li {
     width: 100%;
-    padding: 8px;
-    margin: 5px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   }
 
-  /* Adjust text size for readability */
+  .profile-picture-container {
+    width: 100%;
+  }
+
+  .profile-pic {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .contact-images {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .contact-images img {
+    margin: 5px;
+  }
+
+  /* Adjust font sizes for better readability */
   body {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   h1 { font-size: 24px; }
   h2 { font-size: 20px; }
   h3 { font-size: 18px; }
+
+  /* Handle Winamp player better on mobile */
+  #webamp {
+    width: 100% !important;
+    height: auto !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    transform: scale(0.8);
+    transform-origin: bottom left;
+  }
+
+  #winamp-button {
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
 }
 
-/* Additional adjustments for very small screens */
-@media screen and (max-width: 480px) {
-  .window {
-    margin: 10px auto !important;
-  }
+/* Add smooth scrolling for better mobile experience */
+html {
+  scroll-behavior: smooth;
+}
 
-  .spinning-disk-container {
-    transform: scale(0.6);
-  }
+/* Prevent horizontal scrolling on mobile */
+body {
+  overflow-x: hidden;
+}
 
-  #webamp {
-    transform: scale(0.6);
-  }
-
-  .topnav {
-    font-size: 14px;
-  }
-
-  .navbar {
-    font-size: 14px;
-  }
-
-  .footer {
-    font-size: 12px;
-  }
+/* Improve form elements on mobile */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+  font-size: 16px;
 }
